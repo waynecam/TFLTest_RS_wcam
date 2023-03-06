@@ -1,7 +1,6 @@
-##Architecture
-Clean Architecture with CQRS
+Architecture: Clean Architecture with CQRS
 
-##Building the Code
+Building the Code
 
 **PLEASE NOTE** - I have been unable to create a developer account and obtain an AppId/Appkey so for the purposes of this test I have created an alternative 
 InMemory data service (AsyncInMemoryRoadService.cs). This can be used in the absence of the real (and not end to end tested for the aformentioned reasons) 
@@ -14,12 +13,13 @@ I hope my substituted solution enables you to complete your assessment successfu
 FYI The A2, A3 and A5 are considered existing roads in the InMemory test dataset.
 
 
-##Configuring the AppId and Appkey
+Configuring the AppId and Appkey
 in the appsettings file there is an AppId/AppKey key/value pair that can be updated with alternative AppId/AppKey values
 
-##Running the App
+Running the App
 
-###If running the .exe file from CMD prompt
+If running the .exe file from Powershell:
+
 	1. Open powershell window and browse to the location where the .exe. file resides e.g
 	 YourPathToExe\TFLTestApp.exe
 
@@ -28,7 +28,7 @@ in the appsettings file there is an AppId/AppKey key/value pair that can be upda
 	3. Press ENTER and the result should print to screen
 		*You can review the exit code by typing the command 'ECHO $lastexitcode' (no quotes)
 
-###If running from within Visual Studio
+If running from within Visual Studio
 
 	1. Open Visual Studio
 
@@ -41,9 +41,9 @@ in the appsettings file there is an AppId/AppKey key/value pair that can be upda
 	5. Press ENTER and the result should Print to screen
 
 
-##Running the Tests
+Running the Tests
 
-###Running the tests using dotnet cli
+Running the tests using dotnet cli
 
 	1. Right Click the Test project 'RoadServiceTests'
 
@@ -53,7 +53,7 @@ in the appsettings file there is an AppId/AppKey key/value pair that can be upda
 
 	4. Press ENTER. The test results should output to the screen
 
-###Running the tests using the Test Explorer
+Running the tests using the Test Explorer
 
 	1. Right Click the Test project 'RoadServiceTests'
 
@@ -66,7 +66,7 @@ in the appsettings file there is an AppId/AppKey key/value pair that can be upda
 
 
 
-##Assumptions -
+Assumptions -
 	No validation rules have been specified in use case/applied to input - all input should be in the correct format in this 'Test' scenario. 
 	Ordinarily validation logic would be implemented in the 'Handler' logic within the Application project.
 
