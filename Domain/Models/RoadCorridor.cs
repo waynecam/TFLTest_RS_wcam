@@ -27,7 +27,7 @@ namespace Domain.Models
 
         public string RoadStatusMessage { get
             {
-                return $"The status of the {this.Id ?? string.Empty} is as follows {Environment.NewLine}" +
+                return $"The status of the {this.DisplayName ?? string.Empty} is as follows {Environment.NewLine}" +
                 $"{Indent(3)}The road Status is {this.StatusSeverity ?? string.Empty} {Environment.NewLine}" +
                 $"{Indent(3)}The road Status Description is {this.StatusSeverityDescription ?? string.Empty}";
             } }

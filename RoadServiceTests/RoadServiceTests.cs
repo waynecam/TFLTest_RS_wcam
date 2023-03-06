@@ -59,6 +59,7 @@ namespace RoadServiceTests
             result.Count().ShouldBe(1);
             result.First().ShouldBeOfType(typeof(RoadCorridor));
             result.First().Id.ShouldBe(ExistingCorridor);
+            result.First().DisplayName.ShouldBe(ExistingCorridor);
             result.First().StatusSeverity.ShouldBe("Good");
             result.First().StatusSeverityDescription.ShouldBe("No Exceptional Delays");
 
@@ -93,7 +94,7 @@ namespace RoadServiceTests
         }
         private static Mock<HttpMessageHandler> SetUpCorriderExistsMockHttpHandler()
         {
-            var responsePoco = new RoadCorridor() { Id = ExistingCorridor, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" };
+            var responsePoco = new RoadCorridor() { Id = ExistingCorridor, DisplayName = ExistingCorridor, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" };
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
                .Protected()
@@ -115,7 +116,7 @@ namespace RoadServiceTests
         }
         private static Mock<HttpMessageHandler> SetUpCorriderDoesNotExistMockHttpHandler()
         {
-            var responsePoco = new RoadCorridor() { Id = NonExistentCorridor };
+            var responsePoco = new RoadCorridor() { Id = NonExistentCorridor, DisplayName = NonExistentCorridor };
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
                .Protected()
