@@ -1,4 +1,4 @@
-**Architecture: **
+Architecture:
 Clean Architecture with CQRS
 
 **Building the Code**
