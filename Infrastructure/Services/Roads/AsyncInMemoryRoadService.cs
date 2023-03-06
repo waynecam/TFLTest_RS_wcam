@@ -12,14 +12,14 @@ namespace Infrastructure.Services.Roads
     public class AsyncInMemoryRoadService : IAsyncRoadService
     {
 
-        private readonly List<IRoadCorridor> InMemoryRoadsThatExisit;
+        private readonly List<RoadCorridor> InMemoryRoadsThatExisit;
 
         private readonly IHttpClientFactory _httpClientFactory;
         public AsyncInMemoryRoadService(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
 
-            InMemoryRoadsThatExisit = new List<IRoadCorridor>()
+            InMemoryRoadsThatExisit = new List<RoadCorridor>()
             {
                 new RoadCorridor {Id = "A2", StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays"},
                 new RoadCorridor {Id = "A3", StatusSeverity = "Bad", StatusSeverityDescription = "Exceptional Delays"},
@@ -30,15 +30,15 @@ namespace Infrastructure.Services.Roads
 
 
         
-        public async Task<ICollection<IRoadCorridor>> GetRoadCorridorAsync(string roadId, string appid, string appkey)
+        public async Task<ICollection<RoadCorridor>> GetRoadCorridorAsync(string roadId, string appid, string appkey)
         {
             if(InMemoryRoadsThatExisit.Any(x => x.Id == roadId))
             {
-                return (ICollection<IRoadCorridor>)await Task.FromResult(InMemoryRoadsThatExisit.Where(x => x.Id == roadId).Select(x => x).ToList());
+                return (ICollection<RoadCorridor>)await Task.FromResult(InMemoryRoadsThatExisit.Where(x => x.Id == roadId).Select(x => x).ToList());
             }
             else
             {
-                return await Task.FromResult(new List<IRoadCorridor>() { });
+                return await Task.FromResult(new List<RoadCorridor>() { });
             }
         }
     }

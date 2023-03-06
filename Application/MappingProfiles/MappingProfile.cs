@@ -17,7 +17,7 @@ namespace Application.MappingProfiles
             CreateMap<RoadCorridor, RoadCorridorDto>()
                 .ReverseMap();
 
-            CreateMap<IRoadCorridor, RoadCorridorDto>();
+            //CreateMap<IRoadCorridor, RoadCorridorDto>();
 
         }
 

@@ -18,7 +18,7 @@ namespace Infrastructure.Services.Roads
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<ICollection<IRoadCorridor>> GetRoadCorridorAsync(string roadId,
+        public async Task<ICollection<RoadCorridor>> GetRoadCorridorAsync(string roadId,
             string appid, 
             string appkey)
         {
@@ -36,11 +36,11 @@ namespace Infrastructure.Services.Roads
 
                 /*Returning nullResponse if response is successful but nothing to actually deserialize - suggesting issue downstream with the api
                  *probably requires business analyst input to decide how to actually handle this type response under aforementioned circumstances*/
-                return result != null ? new List<IRoadCorridor>() { result } : new List<IRoadCorridor>() {};
+                return result != null ? new List<RoadCorridor>() { result } : new List<RoadCorridor>() {};
             }
 
             //return new List<IRoadCorridor>() { new RoadCorridor() { Id= roadId, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" } };
-            return new List<IRoadCorridor>() { };
+            return new List<RoadCorridor>() { };
         }
     }
     
