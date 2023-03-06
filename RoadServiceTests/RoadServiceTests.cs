@@ -24,7 +24,9 @@ namespace RoadServiceTests
         IOptions<AppSettings> _appSettings;
 
         private const string ExistingCorridor = "A2";
+        private const string ExistingCorridorDisplayName = "A2";
         private const string NonExistentCorridor = "A90000000";
+        private const string NonExistentCorridorDisplayName = "A90000000";
         private const string TFLBaseRoadUrl = "https://api.tfl.gov.uk/Road/";
         private const string AppKey = "appKeyTest";
         private const string AppId = "appIdTest";
@@ -63,7 +65,7 @@ namespace RoadServiceTests
             result.First().StatusSeverity.ShouldBe("Good");
             result.First().StatusSeverityDescription.ShouldBe("No Exceptional Delays");
 
-            var message = $"The status of the {ExistingCorridor} is as follows {Environment.NewLine}" +
+            var message = $"The status of the {ExistingCorridorDisplayName} is as follows {Environment.NewLine}" +
                 $"{Indent(3)}The road Status is Good {Environment.NewLine}" +
                 $"{Indent(3)}The road Status Description is No Exceptional Delays";
 
@@ -94,7 +96,7 @@ namespace RoadServiceTests
         }
         private static Mock<HttpMessageHandler> SetUpCorriderExistsMockHttpHandler()
         {
-            var responsePoco = new RoadCorridor() { Id = ExistingCorridor, DisplayName = ExistingCorridor, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" };
+            var responsePoco = new RoadCorridor() { Id = ExistingCorridor, DisplayName = ExistingCorridorDisplayName, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" };
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
                .Protected()
@@ -116,7 +118,7 @@ namespace RoadServiceTests
         }
         private static Mock<HttpMessageHandler> SetUpCorriderDoesNotExistMockHttpHandler()
         {
-            var responsePoco = new RoadCorridor() { Id = NonExistentCorridor, DisplayName = NonExistentCorridor };
+            var responsePoco = new RoadCorridor() { Id = NonExistentCorridor, DisplayName = NonExistentCorridorDisplayName };
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
                .Protected()
