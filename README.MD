@@ -68,6 +68,7 @@ in the appsettings file there is an AppId/AppKey key/value pair that can be upda
 
 
 **Assumptions:**
+
 	No validation rules have been specified in use case/applied to input - all input should be in the correct format in this 'Test' scenario. 
 	Ordinarily validation logic would be implemented in the 'Handler' logic within the Application project.
 
