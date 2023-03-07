@@ -3,7 +3,7 @@ Clean Architecture with CQRS
 
 **Building the Code**
 
-~~**PLEASE NOTE** - I have been unable to create a developer account and obtain an AppId/Appkey so for the purposes of this test I have created an alternative 
+<strike>**PLEASE NOTE** - I have been unable to create a developer account and obtain an AppId/Appkey so for the purposes of this test I have created an alternative 
 InMemory data service (AsyncInMemoryRoadService.cs). This can be used in the absence of the real (and not end to end tested for the aformentioned reasons) 
 Http Implemented data service (AsyncRoadService.cs). Both share a common interface and can be interchanged via a boolean feature flag setting in the appsettings.json file
 **(UseInMemoryDataSource: 'true' or 'false')** key/value pair. Please see the 'InfrastructureRegistrationService.cs' where the switch over
@@ -11,7 +11,7 @@ is handled. I did email the 'developers@tfl.gov.uk' team on Friday the 3rd March
 Assuming I do not receive a response before the submission deadline please accept my apologies for not having been able to fully integration test the api personally.
 I hope my substituted solution enables you to complete your assessment successfully and of course you can test the real api using viable credentials.
 
-FYI The A2, A3 and A5 are considered existing roads in the InMemory test dataset.~~
+FYI The A2, A3 and A5 are considered existing roads in the InMemory test dataset.</strike>
 
 
 **Configuring the AppId and Appkey**
