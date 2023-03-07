@@ -1,12 +1,6 @@
 ﻿using Application.Contracts.Roads;
 using Domain.Models;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Services.Roads
 {
@@ -23,23 +17,22 @@ namespace Infrastructure.Services.Roads
             string appkey)
         {
             var httpClient = _httpClientFactory.CreateClient("RoadServiceHttpClient");
+            httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
 
-            var httpResponseMessage = await httpClient.GetAsync($"{roadId}?app_id={appid}&app_key={appkey}");
+            //var httpResponseMessage = await httpClient.GetAsync($"{roadId}?app_id={appid}&app_key={appkey}");
+            var httpResponseMessage = await httpClient.GetAsync($"{roadId}?app_key={appkey}");
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 using var contentStream =
                     await httpResponseMessage.Content.ReadAsStreamAsync();
 
-                var result = await JsonSerializer.DeserializeAsync
-                    <RoadCorridor>(contentStream);
+                var result = JsonConvert.DeserializeAnonymousType(new StreamReader(contentStream).ReadToEnd(), 
+                    new RoadCorridor[] { new RoadCorridor() }); 
 
-                /*Returning nullResponse if response is successful but nothing to actually deserialize - suggesting issue downstream with the api
-                 *probably requires business analyst input to decide how to actually handle this type response under aforementioned circumstances*/
-                return result != null ? new List<RoadCorridor>() { result } : new List<RoadCorridor>() {};
+                return result != null && result.Any() ? new List<RoadCorridor>() { result[0] } : new List<RoadCorridor>() {};
             }
 
-            //return new List<IRoadCorridor>() { new RoadCorridor() { Id= roadId, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" } };
             return new List<RoadCorridor>() { };
         }
     }

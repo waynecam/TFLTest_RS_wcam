@@ -96,7 +96,7 @@ namespace RoadServiceTests
         }
         private static Mock<HttpMessageHandler> SetUpCorriderExistsMockHttpHandler()
         {
-            var responsePoco = new RoadCorridor() { Id = ExistingCorridor, DisplayName = ExistingCorridorDisplayName, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" };
+            RoadCorridor[] responsePoco = { new RoadCorridor() { Id = ExistingCorridor, DisplayName = ExistingCorridorDisplayName, StatusSeverity = "Good", StatusSeverityDescription = "No Exceptional Delays" } };
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
             handlerMock
                .Protected()
